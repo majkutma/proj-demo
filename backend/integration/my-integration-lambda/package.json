@@ -1,5 +1,5 @@
 {
-  "name": "my-lambda",
+  "name": "my-integration-lambda",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",

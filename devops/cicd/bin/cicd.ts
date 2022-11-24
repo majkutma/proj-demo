@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { App } from 'aws-cdk-lib'
-import { PROJStack } from '../lib/proj-stack'
+import { PROJStack } from '../lib/main-stack'
 import { STACK_NAME } from '../constants/resourceNames'
 
 const app = new App()

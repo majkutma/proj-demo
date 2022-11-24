@@ -1,4 +1,4 @@
-import { createMessage } from './businessUtils'
+import { createMessage } from './biz-utils'
 
 interface Event {
   pathParameters: {
