@@ -1,0 +1,2 @@
+# Ignore files in cdk.out
+cdk.out/*

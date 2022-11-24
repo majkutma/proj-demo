@@ -1,0 +1,17 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "standard-with-typescript",
+    "parserOptions": {
+        "ecmaVersion": 2022,
+        "project": "tsconfig.json",
+        "tsconfigRootDir": "C:/Users/fvg3843/PROJECTS/PROJ/proj-demo/devops/cicd",
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-new": "off"
+    }
+}
