@@ -4,9 +4,9 @@ import {
   StackProps
 } from 'aws-cdk-lib'
 
-import { myIntegrationLambda } from './lambda-stack'
-import { myBucket } from './s3-stack'
-import { myAmplify } from './amplify-stack'
+import { myIntegrationLambda } from './lambda-functions'
+import { myBucket } from './s3-buckets'
+// import { myAmplify } from './amplify-apps'
 
 /**
  * Creating the stack
@@ -22,7 +22,7 @@ export class PROJStack extends Stack {
     myBucket(this)
 
     // Creating myAmplify frontend
-    const myAmplifyApp = myAmplify(this)
-    myAmplifyApp.addBranch('main')
+    // const myAmplifyApp = myAmplify(this)
+    // myAmplifyApp.addBranch('main')
   }
 }
