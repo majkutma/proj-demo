@@ -7,10 +7,9 @@ import {
  * Configuring myBucket bucket
  */
 export const mySecretsManager = (stack: Stack): void => {
-  const myGitHubToken = stack.node.tryGetContext('gitHubToken')
+  // const myGitHubToken = stack.node.tryGetContext('gitHubToken')
 
   new secretsmanager.Secret(stack, 'my-github-token', {
-    description: 'The GitHub repository access token',
-    secretStringValue: myGitHubToken
+    description: 'The GitHub repository access token'
   })
 }

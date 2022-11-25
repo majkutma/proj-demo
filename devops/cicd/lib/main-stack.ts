@@ -4,9 +4,10 @@ import {
   StackProps
 } from 'aws-cdk-lib'
 
+import { mySecretsManager } from './secrets-manager'
 import { myIntegrationLambda } from './lambda-functions'
 import { myBucket } from './s3-buckets'
-// import { myAmplify } from './amplify-apps'
+import { myAmplify } from './amplify-apps'
 
 /**
  * Creating the stack
@@ -15,6 +16,9 @@ export class PROJStack extends Stack {
   constructor (scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
 
+    // Creating myBucket bucket
+    mySecretsManager(this)
+
     // Creating myIntegrationLambda function
     myIntegrationLambda(this)
 
@@ -22,7 +26,7 @@ export class PROJStack extends Stack {
     myBucket(this)
 
     // Creating myAmplify frontend
-    // const myAmplifyApp = myAmplify(this)
-    // myAmplifyApp.addBranch('main')
+    const myAmplifyApp = myAmplify(this)
+    myAmplifyApp.addBranch('main')
   }
 }
