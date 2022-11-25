@@ -29,6 +29,7 @@
     "typescript": "4.9.3"
   },
   "dependencies": {
+    "@aws-cdk/aws-amplify-alpha": "2.51.1-alpha.0",
     "aws-cdk-lib": "2.51.1"
   }
 }
