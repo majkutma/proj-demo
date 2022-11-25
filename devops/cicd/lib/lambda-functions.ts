@@ -12,8 +12,8 @@ const lambdaOptions = {
 /**
  * Configuring myIntegrationLambda function
  */
-export const myIntegrationLambda = (stack: Stack): void => {
-  new lambda.Function(stack, 'my-integration-lambda', {
+export const myIntegrationLambda = (stack: Stack): lambda.Function => {
+  return new lambda.Function(stack, 'my-integration-lambda', {
     ...lambdaOptions
   })
 }

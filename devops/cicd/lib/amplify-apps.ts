@@ -14,7 +14,7 @@ export const myAmplify = (stack: Stack): amplify.App => {
     sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
       owner: OWNER,
       repository: REPOSITORY,
-      oauthToken: SecretValue.secretsManager('mygithubtoken16BEBD28-GVTzICqZejPy')
+      oauthToken: SecretValue.secretsManager('github-token')
     }),
     buildSpec: codebuild.BuildSpec.fromObjectToYaml({
       version: 1,

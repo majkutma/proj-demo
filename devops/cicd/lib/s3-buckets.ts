@@ -6,8 +6,8 @@ import {
 /**
  * Configuring myBucket bucket
  */
-export const myBucket = (stack: Stack): void => {
-  new s3.Bucket(stack, 'my-bucket', {
+export const myBucket = (stack: Stack): s3.Bucket => {
+  return new s3.Bucket(stack, 'my-bucket', {
     versioned: true
   })
 }
