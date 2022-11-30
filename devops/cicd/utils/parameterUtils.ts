@@ -1,16 +1,14 @@
 import { RESOURCE_PREFIX, STACK_PREFIX, BRANCH_NAME_DEFAULT, RESOURCE_ID_DEFAULT } from '../constants/resourceNames'
 import getGitBranchName, { CurrentGitBranchResult as GitBrType } from 'current-git-branch'
 
+const gitBranchName = getGitBranchName()
 const sanitizeString = (s: string): string => {
   return s.replace(/[^a-z0-9-]/gi, '-')
 }
-const gitBranchName = getGitBranchName()
-
 export const getBranchName = (): GitBrType => {
   const branchName = (gitBranchName ?? BRANCH_NAME_DEFAULT)
   return branchName
 }
-
 const getBranchId = (): string => {
   const branchId = getBranchName()
   if (typeof branchId === 'string') {
@@ -18,15 +16,13 @@ const getBranchId = (): string => {
   }
   return BRANCH_NAME_DEFAULT
 }
-
 export const getStackId = (): string => {
-  const resourceId = getBranchId()
-  if (resourceId.length !== 0) {
-    return STACK_PREFIX + '-' + resourceId
+  const branchId = getBranchId()
+  if (branchId.length !== 0) {
+    return STACK_PREFIX + '-' + branchId
   }
   return STACK_PREFIX + '-' + BRANCH_NAME_DEFAULT
 }
-
 export const getResourceId = (resourcSlug: string): string => {
   if (resourcSlug.length === 0) {
     throw new Error('Missing Resource Id!')
