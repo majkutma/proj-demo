@@ -7,6 +7,7 @@ import {
 import { myIntegrationLambda } from './lambda-functions'
 import { myBucket } from './s3-buckets'
 import { myAmplify } from './amplify-apps'
+import { getBranchName } from '../utils/parameterUtils'
 
 /**
  * Creating the stack
@@ -14,6 +15,8 @@ import { myAmplify } from './amplify-apps'
 export class PROJStack extends Stack {
   constructor (scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
+
+    const branchName = getBranchName()
 
     // Creating myIntegrationLambda function
     myIntegrationLambda(this)
@@ -23,6 +26,6 @@ export class PROJStack extends Stack {
 
     // Creating myAmplify frontend
     const myAmplifyApp = myAmplify(this)
-    myAmplifyApp.addBranch('main')
+    myAmplifyApp.addBranch(branchName)
   }
 }

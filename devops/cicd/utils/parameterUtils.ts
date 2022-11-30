@@ -1,20 +1,20 @@
 import { RESOURCE_PREFIX, STACK_PREFIX, BRANCH_NAME_DEFAULT, RESOURCE_ID_DEFAULT } from '../constants/resourceNames'
-import getGitBranchName, { CurrentGitBranchResult as GitBrType } from 'current-git-branch'
+import getGitBranchName from 'current-git-branch'
 
 const gitBranchName = getGitBranchName()
 const sanitizeString = (s: string): string => {
   return s.replace(/[^a-z0-9-]/gi, '-')
 }
-export const getBranchName = (): GitBrType => {
+export const getBranchName = (): string => {
   const branchName = (gitBranchName ?? BRANCH_NAME_DEFAULT)
-  return branchName
+  if (typeof branchName === 'string') {
+    return branchName
+  }
+  return BRANCH_NAME_DEFAULT
 }
 const getBranchId = (): string => {
   const branchId = getBranchName()
-  if (typeof branchId === 'string') {
-    return ((branchId === 'main') ? branchId : sanitizeString(branchId))
-  }
-  return BRANCH_NAME_DEFAULT
+  return ((branchId === 'main') ? branchId : sanitizeString(branchId))
 }
 export const getStackId = (): string => {
   const branchId = getBranchId()

@@ -5,12 +5,13 @@ import {
 } from 'aws-cdk-lib'
 import * as amplify from '@aws-cdk/aws-amplify-alpha'
 import { OWNER, REPOSITORY, PATH } from '../constants/repositoryInfo'
+import { getResourceId } from '../utils/parameterUtils'
 
 /**
  * Configuring myAmplify frontend
  */
 export const myAmplify = (stack: Stack): amplify.App => {
-  return new amplify.App(stack, 'my-amplify-frontend', {
+  return new amplify.App(stack, getResourceId('my-amplify-frontend'), {
     sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
       owner: OWNER,
       repository: REPOSITORY,
