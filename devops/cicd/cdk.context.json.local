@@ -1,3 +1,4 @@
 {
-  "gitHubToken": ""
+  "defaultRegion":"",
+  "defaultAccount":""
 }

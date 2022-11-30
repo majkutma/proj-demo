@@ -2,6 +2,7 @@ import {
   aws_s3 as s3,
   Stack
 } from 'aws-cdk-lib'
+// import { getResourceId } from '../utils/parameterUtils'
 
 /**
  * Configuring myBucket bucket
