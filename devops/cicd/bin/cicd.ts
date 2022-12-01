@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { App } from 'aws-cdk-lib'
-import { PROJStack } from '../lib/main-stack'
-import { STACK_ID_DEFAULT } from '../constants/resourceNames'
-import { getBranchName, getStackId } from '../utils/parameterUtils'
+import { ProjStack } from '../lib/main-stack'
+import { getBranchName, getStackId } from '../utils/param-utils'
+import { STACK_ID_DEFAULT } from '../constants/proj-info'
 
 const app = new App()
 const stackId = getStackId() ?? STACK_ID_DEFAULT
@@ -16,7 +16,7 @@ console.log(' Please review the stack name: ', stackId)
 console.log(' Region: ', region, ' Account: ', account)
 console.log('-----------------------------------------------------')
 
-new PROJStack(app, stackId, {
+new ProjStack(app, stackId, {
   env: {
     account,
     region

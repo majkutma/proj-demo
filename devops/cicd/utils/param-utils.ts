@@ -1,5 +1,5 @@
-import { RESOURCE_PREFIX, STACK_PREFIX, BRANCH_NAME_DEFAULT, RESOURCE_ID_DEFAULT } from '../constants/resourceNames'
 import getGitBranchName from 'current-git-branch'
+import { RESOURCE_PREFIX, STACK_PREFIX, BRANCH_NAME_DEFAULT, RESOURCE_ID_DEFAULT } from '../constants/proj-info'
 
 const gitBranchName = getGitBranchName()
 const sanitizeString = (s: string): string => {
