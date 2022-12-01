@@ -1,6 +1,5 @@
 export const STACK_ID_DEFAULT: string = 'stack-id-default'
-export const BRANCH_NAME_DEFAULT: string = 'branch-name-default'
+export const BRANCH_ID_DEFAULT: string = 'branch-id-default'
 export const RESOURCE_ID_DEFAULT: string = 'resource-id-default'
 
-export const STACK_PREFIX: string = 'proj-demo'
-export const RESOURCE_PREFIX: string = 'proj-demo'
+export const PREFIX: string = 'proj-demo'

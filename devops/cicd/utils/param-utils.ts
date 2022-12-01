@@ -1,27 +1,30 @@
 import getGitBranchName from 'current-git-branch'
-import { RESOURCE_PREFIX, STACK_PREFIX, BRANCH_NAME_DEFAULT, RESOURCE_ID_DEFAULT } from '../constants/proj-info'
+import { PREFIX, BRANCH_ID_DEFAULT, RESOURCE_ID_DEFAULT } from '../constants/proj-info'
 
 const gitBranchName = getGitBranchName()
 const sanitizeString = (s: string): string => {
   return s.replace(/[^a-z0-9-]/gi, '-')
 }
 export const getBranchName = (): string => {
-  const branchName = (gitBranchName ?? BRANCH_NAME_DEFAULT)
+  const branchName = (gitBranchName ?? BRANCH_ID_DEFAULT)
   if (typeof branchName === 'string') {
     return branchName
   }
-  return BRANCH_NAME_DEFAULT
+  return BRANCH_ID_DEFAULT
 }
-const getBranchId = (): string => {
+const createId = (defaultId: string, resId: string): string => {
   const branchId = getBranchName()
-  return ((branchId === 'main') ? branchId : sanitizeString(branchId))
+  let myId = defaultId
+  if (branchId.length !== 0) {
+    myId = [PREFIX, branchId.substring(0, 31), resId]
+      .join('-')
+      .replace('--', '-')
+      .substring(0, 62)
+  }
+  return sanitizeString(myId)
 }
 export const getStackId = (): string => {
-  const branchId = getBranchId()
-  if (branchId.length !== 0) {
-    return STACK_PREFIX + '-' + branchId
-  }
-  return STACK_PREFIX + '-' + BRANCH_NAME_DEFAULT
+  return createId(PREFIX + '-' + BRANCH_ID_DEFAULT, 'stack')
 }
 export const getResourceId = (resourcSlug: string): string => {
   if (resourcSlug.length === 0) {
@@ -30,12 +33,5 @@ export const getResourceId = (resourcSlug: string): string => {
   if (resourcSlug.length > 32) {
     throw new Error('Resource Id must not be onger than 32 characters!')
   }
-  const branchId = getBranchId()
-  if (typeof branchId === 'string') {
-    return [RESOURCE_PREFIX, branchId.substring(0, 31), resourcSlug]
-      .join('-')
-      .replace('--', '-')
-      .substring(0, 63)
-  }
-  return RESOURCE_ID_DEFAULT
+  return createId(RESOURCE_ID_DEFAULT, resourcSlug)
 }
