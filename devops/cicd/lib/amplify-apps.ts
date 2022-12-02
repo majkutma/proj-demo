@@ -47,6 +47,10 @@ const amplifyOptions = {
     repository: REPOSITORY,
     oauthToken: SecretValue.secretsManager('github-token')
   }),
+  environmentVariables: {
+    AMPLIFY_DIFF_DEPLOY: 'true',
+    AMPLIFY_MONOREPO_APP_ROOT: 'frontend'
+  },
   buildSpec: codebuild.BuildSpec.fromObjectToYaml({
     ...buildOptions
   })
